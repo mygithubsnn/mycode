@@ -28,12 +28,21 @@ def main():
 
     # make a request with the request library
     neowrequest = requests.get(NEOURL + startdate + "&" + nasacreds)
+    
+    # challenge1 ask for date
+    start_date = input("Enter a start date YYYY-MM-DD: ")
+    start_date = "start_date=" + start_date
+
+    neowrequest2 = requests.get(NEOURL + "&" + start_date + "&" + nasacreds)
 
     # strip off json attachment from our response
     neodata = neowrequest.json()
+    neodata2 = neowrequest2.json()
 
     ## display NASAs NEOW data
     print(neodata)
+    print(neodata2)
+
 
 if __name__ == "__main__":
     main()
